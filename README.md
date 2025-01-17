@@ -34,7 +34,7 @@ To get started with Lynch, you can install it via **mix** in Elixir. Here's how 
 4. Call the function to get a random Lynch quote:
 
    ```elixir
-   Lynch.get_random_quote()
+   Lynch.generate_random_quote()
    ```
 
 ### Example Output
