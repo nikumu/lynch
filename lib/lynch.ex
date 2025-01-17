@@ -1,18 +1,20 @@
 defmodule Lynch do
-  @moduledoc """
-  Documentation for `Lynch`.
-  """
+  def generate_random_quote do
+    quotes = read_quotes_from_file("quotes.txt")
+    random_quote = Enum.random(quotes)
+    IO.puts("Random quote: #{random_quote}")
+  end
 
-  @doc """
-  Hello world.
+  defp read_quotes_from_file(file_name) do
+    case File.read(file_name) do
+      {:ok, content} ->
+        String.split(content, "\n", trim: true)
 
-  ## Examples
-
-      iex> Lynch.hello()
-      :world
-
-  """
-  def hello do
-    :world
+      {:error, reason} ->
+        IO.puts("Error reading the file: #{reason}")
+        []
+    end
   end
 end
+
+Lynch.generate_random_quote()
