@@ -6,7 +6,9 @@ defmodule Lynch do
   end
 
   defp read_quotes_from_file(file_name) do
-    case File.read(file_name) do
+    file_path = Path.expand("../#{file_name}", __DIR__)
+
+    case File.read(file_path) do
       {:ok, content} ->
         String.split(content, "\n", trim: true)
 
@@ -16,5 +18,3 @@ defmodule Lynch do
     end
   end
 end
-
-Lynch.generate_random_quote()
